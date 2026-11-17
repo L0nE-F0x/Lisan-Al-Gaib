@@ -83,7 +83,7 @@ export const events: LoreEvent[] = [
   },
   {
     id: 'paul-born',
-    year: 10175,
+    year: 10176,
     title: 'Birth of Paul Atreides',
     summary:
       'Jessica bears Duke Leto a son instead of the daughter her Bene Gesserit superiors ordered, upsetting the breeding program by a generation.',

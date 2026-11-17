@@ -128,6 +128,21 @@ export const regions: ArrakisRegion[] = [
   },
 ];
 
+const RAKIS_BURNED = 15228.5;
+
+const fremen: ControlEntry[] = [
+  { from: 1, faction: 'fremen', approx: true, note: 'Fremen hold the deep desert; founding dates unrecorded' },
+  { from: GOD_EMPEROR, faction: 'atreides-empire', approx: true, note: 'All of Arrakis answers to Leto II' },
+  { from: AFTER_TYRANT, faction: 'rakian-priesthood', approx: true, note: 'The Priesthood of the Divided God rules Rakis' },
+  { from: RAKIS_BURNED, faction: 'unaligned', note: 'Rakis is burned by the Honored Matres' },
+];
+
+/** Appended to imperial-era control lists so no place keeps a stale ruler after Leto II. */
+const afterTyrant: ControlEntry[] = [
+  { from: AFTER_TYRANT, faction: 'rakian-priesthood', approx: true },
+  { from: RAKIS_BURNED, faction: 'unaligned' },
+];
+
 const arrakeenControl: ControlEntry[] = [
   { from: 1, faction: 'corrino', approx: true, note: 'Imperial city; earlier holders unrecorded' },
   { from: 10111, faction: 'harkonnen', approx: true },
@@ -135,11 +150,10 @@ const arrakeenControl: ControlEntry[] = [
   { from: 10191.4, faction: 'harkonnen' },
   { from: 10193.3, faction: 'atreides', note: 'Capital of Emperor Paul Muad\'Dib, and later of Alia\'s Regency' },
   { from: GOD_EMPEROR, faction: 'atreides-empire' },
+  ...afterTyrant,
 ];
 
-const fremen: ControlEntry[] = [
-  { from: 1, faction: 'fremen', approx: true, note: 'Fremen hold the deep desert; founding dates unrecorded' },
-];
+
 
 export const places: ArrakisPlace[] = [
   {
@@ -191,7 +205,7 @@ export const places: ArrakisPlace[] = [
     lon: 0,
     summary: 'A low basin at the north pole, the anchor of the polar settlements on the Dune-era map.',
     facts: ['Lies at the centre of the northern polar region shown in the Dune appendix map.'],
-    control: [{ from: 1, faction: 'corrino', approx: true }, { from: 10111, faction: 'harkonnen', approx: true }, { from: 10193.3, faction: 'atreides' }, { from: GOD_EMPEROR, faction: 'atreides-empire' }],
+    control: [{ from: 1, faction: 'corrino', approx: true }, { from: 10111, faction: 'harkonnen', approx: true }, { from: 10193.3, faction: 'atreides' }, { from: GOD_EMPEROR, faction: 'atreides-empire' }, ...afterTyrant],
     sources: ['dune'],
   },
   {
@@ -324,7 +338,7 @@ export const places: ArrakisPlace[] = [
       'Named on the Dune-era map.',
       'Leto II is travelling to Tuono for his wedding to Hwi Noree when he is killed.',
     ],
-    control: [...fremen, { from: GOD_EMPEROR, faction: 'atreides-empire' }],
+    control: fremen,
     sources: ['dune', 'god-emperor'],
   },
   {

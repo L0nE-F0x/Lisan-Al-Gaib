@@ -87,11 +87,11 @@ export const characters: Character[] = [
     id: 'paul',
     name: 'Paul Atreides',
     aliases: ['Muad\'Dib', 'Usul', 'Kwisatz Haderach', 'Lisan al-Gaib', 'The Preacher'],
-    born: 10175,
+    born: 10176,
     died: 10219,
     approxDates: true,
     allegiance: [
-      { from: 10175, faction: 'atreides' },
+      { from: 10176, faction: 'atreides' },
       { from: 10191.6, faction: 'fremen', note: 'Lives as Usul among the Fremen' },
       { from: 10193.3, faction: 'atreides', note: 'Emperor' },
       { from: 10207.4, faction: 'fremen', approx: true, note: 'Blind exile in the desert, later the Preacher' },
@@ -99,7 +99,7 @@ export const characters: Character[] = [
     summary:
       'Son of Duke Leto and Jessica, the Kwisatz Haderach the Bene Gesserit did not plan for. As Muad\'Dib he leads the Fremen to the throne, foresees the Jihad he cannot stop, and ends as a blind Preacher killed in Arrakeen.',
     whereabouts: [
-      { from: 10175, body: 'caladan' },
+      { from: 10176, body: 'caladan' },
       { from: 10191.1, body: 'arrakis', place: 'arrakeen' },
       { from: 10191.45, body: 'arrakis' },
       { from: 10191.6, body: 'arrakis', place: 'sietch-tabr' },
@@ -129,7 +129,7 @@ export const characters: Character[] = [
       { id: 'hayt', type: 'ally' },
     ],
     sources: ['dune', 'messiah', 'children'],
-    note: 'Born 10,175 AG (he is fifteen when the Atreides reach Arrakis). Death year inferred from Children of Dune.',
+    note: 'Born 10,176 AG: he is fifteen when Dune opens in 10,191. Death year inferred from Children of Dune.',
   },
   {
     id: 'alia',
