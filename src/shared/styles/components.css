@@ -153,7 +153,7 @@
 .link-btn:hover { color: var(--spice-hot); text-decoration-color: currentColor; }
 
 /* ---------- Palette ---------- */
-.palette {
+dialog.palette {
   width: min(560px, calc(100vw - 2 * var(--gutter)));
   margin-top: 12vh;
   padding: var(--space-3);

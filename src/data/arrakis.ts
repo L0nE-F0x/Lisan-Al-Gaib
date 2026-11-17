@@ -150,7 +150,6 @@ const arrakeenControl: ControlEntry[] = [
   { from: 10191.4, faction: 'harkonnen' },
   { from: 10193.3, faction: 'atreides', note: 'Capital of Emperor Paul Muad\'Dib, and later of Alia\'s Regency' },
   { from: GOD_EMPEROR, faction: 'atreides-empire' },
-  ...afterTyrant,
 ];
 
 
