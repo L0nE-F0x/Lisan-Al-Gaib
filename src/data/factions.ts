@@ -46,7 +46,7 @@ export const factions: Faction[] = [
     color: '#62c47f',
     sigil: 'hawk',
     summary:
-      'The Great House of Caladan, with its red hawk crest. Duke Leto is betrayed on Arrakis, and his son Paul becomes Muad\'Dib and Emperor.',
+      'The Great House of Caladan, whose crest is the hawk. Duke Leto is betrayed on Arrakis, and his son Paul becomes Muad\'Dib and Emperor.',
     sources: ['dune', 'messiah', 'children', 'god-emperor', 'heretics', 'chapterhouse'],
   },
   {
