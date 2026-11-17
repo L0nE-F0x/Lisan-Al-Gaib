@@ -254,6 +254,7 @@ kbd, .kbd {
 
 /* ---------- Dialog ---------- */
 dialog.dialog {
+  margin: auto; /* the global margin reset removes the UA's dialog centring */
   max-width: min(560px, calc(100vw - 2 * var(--gutter)));
   max-height: min(80dvh, 720px);
   padding: 0;

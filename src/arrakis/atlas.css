@@ -516,5 +516,3 @@ html[data-cine='true'] .atlas::after { transform: none; }
   .intro[data-state='in'] { animation: none; }
 }
 
-/* The base reset (`* { margin: 0 }`) removes the dialog's auto centring; restore it here. */
-html[data-page='arrakis'] dialog.palette { margin: 12vh auto auto; }

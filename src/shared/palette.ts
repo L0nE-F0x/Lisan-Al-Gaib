@@ -127,7 +127,18 @@ export class Palette {
       }
       if (best < Infinity) scored.push({ item, score: best + (item.dim ? 3 : 0) });
     }
-    scored.sort((a, b) => a.score - b.score || a.item.label.localeCompare(b.item.label));
+    // Keep groups contiguous (in the order the source lists them), best matches first within each.
+    const groupOrder = new Map<string, number>();
+    for (const item of this.items) if (!groupOrder.has(item.group)) groupOrder.set(item.group, groupOrder.size);
+    const groupBest = new Map<string, number>();
+    for (const s of scored) groupBest.set(s.item.group, Math.min(groupBest.get(s.item.group) ?? Infinity, s.score));
+    scored.sort(
+      (a, b) =>
+        groupBest.get(a.item.group)! - groupBest.get(b.item.group)! ||
+        groupOrder.get(a.item.group)! - groupOrder.get(b.item.group)! ||
+        a.score - b.score ||
+        a.item.label.localeCompare(b.item.label),
+    );
     this.filtered = scored.slice(0, 60).map((s) => s.item);
     this.active = 0;
     this.render();
