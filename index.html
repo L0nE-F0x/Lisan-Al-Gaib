@@ -3,10 +3,191 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Archives · Lisan al-Gaib</title>
+  <title>Lisan al-Gaib — Imperial Archives</title>
+  <meta name="description" content="An unofficial fan-made atlas of Frank Herbert's Dune novels: fly over a procedurally rendered Arrakis and travel fifteen thousand years of the Known Universe, from the Butlerian Jihad to the Scattering." />
+  <link rel="canonical" href="https://lisan-al-gaib.netlify.app/" />
+  <meta name="theme-color" content="#0a0705" />
+  <meta name="color-scheme" content="dark" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lisan al-Gaib" />
+  <meta property="og:url" content="https://lisan-al-gaib.netlify.app/" />
+  <meta property="og:title" content="Lisan al-Gaib — Imperial Archives" />
+  <meta property="og:description" content="An unofficial fan atlas of Frank Herbert's Dune novels: the desert planet Arrakis and fifteen thousand years of the Known Universe, interactive." />
+  <meta property="og:image" content="https://lisan-al-gaib.netlify.app/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="A crescent-lit desert planet over the words Lisan al-Gaib" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lisan al-Gaib — Imperial Archives" />
+  <meta name="twitter:description" content="An unofficial fan atlas of Frank Herbert's Dune novels: Arrakis and the Known Universe, interactive." />
+  <meta name="twitter:image" content="https://lisan-al-gaib.netlify.app/og.jpg" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <script>document.documentElement.classList.add('js');</script>
+  <noscript>
+    <style>
+      .hub-noscript-hide { display: none !important; }
+    </style>
+  </noscript>
 </head>
-<body>
-  <main id="main"></main>
+<body class="hub">
+  <noscript>
+    <nav class="noscript-nav" aria-label="Primary">
+      <a href="/">Archives</a> <a href="/arrakis/">Arrakis</a> <a href="/universe/">Known Universe</a>
+    </nav>
+  </noscript>
+
+  <div class="hero-stage" aria-hidden="true">
+    <div class="hero-planet-css"></div>
+    <canvas class="hero-canvas" id="hero-canvas"></canvas>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <p class="eyebrow hero__eyebrow">Imperial Archives</p>
+        <h1 class="hero__title display" id="hero-title">Lisan al-Gaib</h1>
+        <p class="hero__tagline">Fifteen thousand years of the Imperium, mapped from the deep desert outward.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary hero__cta" href="/arrakis/" data-transition="Planetary uplink — Arrakis">
+            Descend to Arrakis
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn hero__cta hero__cta--alt" href="/universe/" data-transition="Fold-space routing — Known Universe">
+            The Known Universe
+          </a>
+        </div>
+        <p class="hero__countdown" id="countdown" hidden></p>
+      </div>
+      <a class="hero__cue" href="#books">
+        <span>Descend</span>
+        <span class="hero__cue-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ======================= EPIGRAPH ======================= -->
+    <figure class="epigraph reveal" aria-label="Epigraph">
+      <blockquote class="epigraph__quote display"><p>I must not fear.</p></blockquote>
+      <figcaption class="epigraph__cite">
+        The first line of the Bene Gesserit Litany Against Fear, from Frank Herbert's <cite>Dune</cite> (1965)
+      </figcaption>
+    </figure>
+
+    <!-- ======================= BOOKS ======================= -->
+    <section class="section books" id="books" aria-labelledby="books-title">
+      <header class="section__head reveal">
+        <p class="eyebrow">The Canon · 1965–1985</p>
+        <h2 class="section__title display" id="books-title">The Six Books</h2>
+        <p class="section__lede">Frank Herbert wrote six Dune novels across twenty years, and between their first and last pages lie five thousand years of in-universe history. This archive follows those books and nothing else.</p>
+      </header>
+      <div class="books__mount" id="books-mount">
+        <noscript>
+          <ol class="books__fallback">
+            <li><i>Dune</i> (1965)</li>
+            <li><i>Dune Messiah</i> (1969)</li>
+            <li><i>Children of Dune</i> (1976)</li>
+            <li><i>God Emperor of Dune</i> (1981)</li>
+            <li><i>Heretics of Dune</i> (1984)</li>
+            <li><i>Chapterhouse: Dune</i> (1985)</li>
+          </ol>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ======================= POWERS ======================= -->
+    <section class="section powers" id="powers" aria-labelledby="powers-title">
+      <header class="section__head reveal">
+        <p class="eyebrow">Landsraad Registry · 10,191 AG</p>
+        <h2 class="section__title display" id="powers-title">Powers of the Imperium</h2>
+        <p class="section__lede">An emperor, the Great Houses, a sisterhood, a monopoly and a desert people, each needing the spice and none trusting the others.</p>
+      </header>
+      <div class="powers__mount" id="powers-mount"></div>
+    </section>
+
+    <!-- ======================= SHAI-HULUD ======================= -->
+    <section class="worm" id="shai-hulud" aria-labelledby="worm-title">
+      <canvas class="worm__canvas" id="worm-canvas" aria-hidden="true"></canvas>
+      <div class="worm__content">
+        <p class="eyebrow reveal">The Old Man of the Desert</p>
+        <h2 class="section__title display reveal" id="worm-title">Shai-Hulud</h2>
+        <p class="worm__copy reveal">Sandworms hundreds of metres long patrol the open sand, drawn by any steady rhythm. The Fremen cross the dunes with a broken, shuffling step, and when they want a worm to come they plant a thumper and wait.</p>
+        <div class="worm__actions reveal hub-noscript-hide">
+          <button class="btn btn--primary worm__summon" id="worm-summon" type="button" hidden>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v14"/><path d="M8 7h8"/><path d="M12 17l-2 4h4z"/><path d="M4 21c2-1.2 4-1.2 6 0"/><path d="M14 21c2-1.2 4-1.2 6 0"/></svg>
+            Plant a thumper
+          </button>
+          <p class="worm__status" id="worm-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= ARCHIVES ======================= -->
+    <section class="section archives" id="archives" aria-labelledby="archives-title">
+      <header class="section__head reveal">
+        <p class="eyebrow">Deep Archives</p>
+        <h2 class="section__title display" id="archives-title">Enter the Archives</h2>
+        <p class="section__lede">Two atlases, one timeline. Scrub through the centuries and watch who holds each world change beneath you.</p>
+      </header>
+      <div class="portals">
+        <a class="portal portal--arrakis reveal" href="/arrakis/" data-transition="Planetary uplink — Arrakis" aria-describedby="portal-arrakis-desc">
+          <div class="portal__scene" aria-hidden="true">
+            <div class="portal__planet"></div>
+            <img class="portal__shot" id="portal-shot" alt="" hidden />
+            <div class="portal__rings"><i></i><i></i><i></i></div>
+          </div>
+          <div class="portal__body">
+            <p class="eyebrow portal__tag">Planetary atlas</p>
+            <h3 class="portal__title display">Arrakis</h3>
+            <p class="portal__desc" id="portal-arrakis-desc">Spin the desert planet, then unroll it into a map. Find Arrakeen, the sietches and the Sareer, and follow the planet through the centuries as storms, empires and finally green fields sweep across it.</p>
+            <p class="portal__stats mono" id="portal-arrakis-stats"></p>
+            <span class="portal__enter">Descend to the surface
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="portal portal--universe reveal" href="/universe/" data-transition="Fold-space routing — Known Universe" aria-describedby="portal-universe-desc">
+          <div class="portal__scene" aria-hidden="true">
+            <svg class="portal__starmap" id="portal-starmap" viewBox="-1100 -1100 2200 2200" preserveAspectRatio="xMidYMid slice"></svg>
+          </div>
+          <div class="portal__body">
+            <p class="eyebrow portal__tag">Galactic atlas</p>
+            <h3 class="portal__title display">The Known Universe</h3>
+            <p class="portal__desc" id="portal-universe-desc">Every world the novels name, on one living map. Follow the great families across fifteen millennia, from the fall of the thinking machines to the return from the Scattering.</p>
+            <p class="portal__stats mono" id="portal-universe-stats"></p>
+            <span class="portal__enter">Fold space
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="site-footer__name display">Lisan al-Gaib</p>
+        <p class="site-footer__tag">An atlas of Frank Herbert's Dune, made by a fan.</p>
+      </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <a href="/arrakis/">Arrakis</a>
+        <a href="/universe/">Known Universe</a>
+        <a href="https://github.com/L0nE-F0x/Lisan-Al-Gaib" rel="noopener">Source on GitHub</a>
+      </nav>
+      <p class="site-footer__disclaimer" id="fan-disclaimer">An unofficial, non-commercial fan project inspired by the novels of Frank Herbert. Dune and related names are trademarks of their respective owners. No affiliation with or endorsement by Herbert Properties LLC, Legendary Entertainment, Warner Bros. or any licensee is implied. All artwork and sound on this site are original or procedurally generated.</p>
+      <p class="site-footer__credits">
+        Planet surface and storms use simplex noise by Ashima Arts and Stefan Gustavson (MIT licence).
+        Typefaces Cinzel, Rajdhani and JetBrains Mono are served via Fontsource under the SIL Open Font Licence.
+        Rendered with three.js (MIT).
+      </p>
+    </div>
+  </footer>
+
   <script type="module" src="/src/hub/main.ts"></script>
 </body>
 </html>

@@ -236,6 +236,8 @@ export class ArrakisGlobe {
   private disposed = false;
   private resizeObserver: ResizeObserver;
   private maxDpr: number;
+  /** Lens shift (fractions of the canvas, +x right, +y down); see setFrameShift(). */
+  private frameShift = { x: 0, y: 0 };
 
   constructor(canvas: HTMLCanvasElement, opts: GlobeOptions = {}) {
     this.canvas = canvas;
@@ -361,6 +363,16 @@ export class ArrakisGlobe {
     if (this.stormMat) this.stormMat.uniforms.uStorms.value = Math.min(1, Math.max(0, amount));
   }
 
+  /**
+   * Move where the planet sits on the canvas without moving the camera (an off-axis lens
+   * shift), as fractions of the canvas size: (0, 0.9) puts the centre near the bottom edge
+   * for a horizon shot. project()/pick() stay exact. Added for the hub hero.
+   */
+  setFrameShift(x: number, y: number): void {
+    this.frameShift.x = x;
+    this.frameShift.y = y;
+  }
+
   /** Configure moon visuals. Call once; positions animate in render(). */
   setMoons(defs: { orbit: number; size: number; period: number; color: string }[]): void {
     for (const m of this.moons) {
@@ -439,6 +451,12 @@ export class ArrakisGlobe {
     this.camera.position.set(0, 0, dist);
     this.camera.lookAt(0, 0, 0);
     this.camera.near = Math.max(0.005, (dist - 1.2) * 0.5);
+    const fs = this.frameShift;
+    if (fs.x !== 0 || fs.y !== 0) {
+      this.camera.setViewOffset(this.width, this.height, -fs.x * this.width, -fs.y * this.height, this.width, this.height);
+    } else if (this.camera.view) {
+      this.camera.clearViewOffset();
+    }
     this.camera.updateProjectionMatrix();
     u.uDetail.value = Math.max(0, Math.min(1, (2.2 - dist) / 0.9)) * (1 - morph * 0.5);
 
