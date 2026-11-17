@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card</title>
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #0a0705; }
+  #c { position: absolute; left: 540px; top: -25px; width: 680px; height: 680px; max-width: none; z-index: 0; }
+  .fade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, #0a0705 0%, #0a0705 36%, rgba(10,7,5,0.8) 47%, rgba(10,7,5,0) 62%); }
+  .card { position: absolute; inset: 0; z-index: 2; padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 20px; letter-spacing: 0.32em; text-transform: uppercase; color: #c8a97a; }
+  h1 { font-family: 'Cinzel', serif; font-weight: 500; font-size: 92px; line-height: 1; letter-spacing: 0.08em; color: #ece0c8; margin: 22px 0 26px; }
+  p { font-family: 'Rajdhani', sans-serif; font-weight: 500; font-size: 30px; color: #c8a97a; max-width: 560px; line-height: 1.3; }
+  .rule { width: 120px; height: 2px; background: #f0a44a; margin-top: 34px; }
+  .url { z-index: 2; position: absolute; left: 80px; bottom: 48px; font-family: 'JetBrains Mono', monospace; font-size: 18px; letter-spacing: 0.12em; color: #a08867; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="fade"></div>
+<div class="card">
+  <div class="eyebrow">Imperial Archives</div>
+  <h1>LISAN<br>AL-GAIB</h1>
+  <p>An interactive atlas of Arrakis and the Known Universe, after Frank Herbert's Dune.</p>
+  <div class="rule"></div>
+</div>
+<div class="url">lisan-al-gaib.netlify.app</div>
+<script type="module">
+import '/src/shared/styles/index.css';
+import { ArrakisGlobe } from '/src/shared/globe/globe.ts';
+const g = new ArrakisGlobe(document.getElementById('c'), { quality: 'high', moons: false, stars: false, transparent: true, maxDpr: 1 });
+g.setSunFromView(0.75, 0.45, 0.5);
+g.view.centerLat = 16; g.view.centerLon = 40; g.view.distance = 3.7;
+g.resize();
+g.setStorms(0.12);
+for (let i = 0; i < 4; i++) g.render(i ? 0 : 6);
+await document.fonts.ready;
+document.title = 'ready';
+</script>
+</body>
+</html>
