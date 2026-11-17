@@ -1,3 +1,21 @@
 [build]
-  publish = "."
-  command = ""
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/arrakis/index.html"
+  to = "/arrakis/"
+  status = 301
+
+[[redirects]]
+  from = "/universe/index.html"
+  to = "/universe/"
+  status = 301

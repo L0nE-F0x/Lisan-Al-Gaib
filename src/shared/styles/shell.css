@@ -1,0 +1,128 @@
+/* ==========================================================================
+   Site shell: header, navigation, mobile menu, page transition, footer note
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: calc(var(--header-h) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) var(--gutter) 0;
+  background: linear-gradient(180deg, rgb(10 7 5 / 0.92), rgb(10 7 5 / 0.6) 70%, transparent);
+  transition: background var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+.site-header[data-solid='true'] {
+  background: rgb(10 7 5 / 0.94);
+  border-bottom-color: var(--line);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header[data-solid='true'] {
+    background: rgb(10 7 5 / 0.72);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--bone);
+}
+.brand:hover { color: var(--spice-hot); }
+.brand__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+}
+.brand__tag {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px, decorative tagline; brand name carries meaning */
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--sand-dim);
+}
+
+.site-nav { display: flex; align-items: center; gap: var(--space-1); margin-left: auto; }
+.site-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--sand);
+}
+.site-nav a:hover { color: var(--spice-hot); }
+.site-nav a[aria-current='page'] { color: var(--spice); }
+.site-nav a[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: var(--space-3); right: var(--space-3); bottom: 8px;
+  height: 1px;
+  background: var(--spice);
+}
+.site-header__tools { display: flex; align-items: center; gap: var(--space-2); }
+.menu-btn { display: none; }
+
+@media (max-width: 760px) {
+  .site-nav {
+    position: fixed;
+    inset: calc(var(--header-h) + env(safe-area-inset-top)) 0 auto 0;
+    z-index: var(--z-menu);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-3) var(--gutter) var(--space-5);
+    background: var(--glass-strong);
+    border-bottom: 1px solid var(--line-strong);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), visibility var(--dur);
+  }
+  .site-nav[data-open='true'] { opacity: 1; transform: none; visibility: visible; }
+  .site-nav a { min-height: 52px; font-size: var(--step--1); border-bottom: 1px solid var(--line); }
+  .site-nav a[aria-current='page']::after { display: none; }
+  .menu-btn { display: inline-grid; }
+  .site-header__tools { margin-left: auto; }
+}
+
+/* ---------- Page transition ---------- */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-transition);
+  display: grid;
+  place-items: center;
+  background: var(--obsidian);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms var(--ease-cine), visibility 320ms;
+}
+.page-transition[data-active='true'] { opacity: 1; visibility: visible; }
+.page-transition__text {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--spice);
+}
+
+/* ---------- Fan disclaimer ---------- */
+.fan-note {
+  font-size: var(--step--2);
+  line-height: 1.6;
+  color: var(--sand-dim);
+}
+.fan-note a { color: var(--sand); }

@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Lisan al-Gaib — design tokens
+   One source of truth for colour, type, space, depth and motion.
+   All text colours below pass WCAG AA (4.5:1) on --obsidian unless noted.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* ---- Surfaces ---- */
+  --obsidian: #0a0705;          /* page background */
+  --ink: #14100b;               /* raised surface */
+  --ink-2: #1c1610;             /* raised surface, hover */
+  --glass: rgb(16 12 8 / 0.78); /* floating panels over canvases */
+  --glass-strong: rgb(12 9 6 / 0.92);
+  --scrim: rgb(5 3 2 / 0.72);
+
+  /* ---- Text ---- */
+  --bone: #ece0c8;              /* primary text            15.6:1 */
+  --sand: #c8a97a;              /* secondary text           8.9:1 */
+  --sand-dim: #a08867;          /* tertiary / captions      5.9:1 */
+  --sand-faint: #6e5c45;        /* decorative only, never body text */
+
+  /* ---- Accents ---- */
+  --spice: #f0a44a;             /* primary accent           9.6:1 */
+  --spice-hot: #ffc266;
+  --spice-deep: #b45f1d;
+  --ember: #ff7a45;
+  --guild: #7dd3fc;             /* Spacing Guild / water / info */
+  --fremen: #8fbf7a;            /* life, water of life, greening */
+  --blood: #ef5a4f;             /* danger, death */
+
+  /* ---- Lines ---- */
+  --line: rgb(240 164 74 / 0.14);
+  --line-strong: rgb(240 164 74 / 0.36);
+  --line-neutral: rgb(236 224 200 / 0.1);
+
+  /* ---- Type ---- */
+  --font-display: 'Cinzel', 'Times New Roman', serif;
+  --font-ui: 'Rajdhani', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Fluid scale. Nothing interactive or informational goes below --step--2 (12px). */
+  --step--2: 0.75rem;                                   /* 12px  labels, captions */
+  --step--1: 0.875rem;                                  /* 14px  secondary UI     */
+  --step-0: 1rem;                                       /* 16px  body             */
+  --step-1: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+  --step-2: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+  --step-3: clamp(1.7rem, 1.4rem + 1.5vw, 2.6rem);
+  --step-4: clamp(2.4rem, 1.7rem + 3.5vw, 4.6rem);
+  --step-5: clamp(3.4rem, 2rem + 8vw, 9rem);
+
+  --tracking-wide: 0.18em;
+  --tracking-wider: 0.32em;
+
+  /* ---- Space ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+
+  /* ---- Shape & depth ---- */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --shadow-panel: 0 12px 40px rgb(0 0 0 / 0.55), 0 0 0 1px var(--line);
+  --glow-spice: 0 0 24px rgb(240 164 74 / 0.25);
+
+  /* ---- Layers ---- */
+  --z-canvas: 0;
+  --z-fx: 5;
+  --z-ui: 20;
+  --z-panel: 30;
+  --z-header: 40;
+  --z-menu: 50;
+  --z-dialog: 60;
+  --z-toast: 70;
+  --z-transition: 90;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cine: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 140ms;
+  --dur: 260ms;
+  --dur-slow: 600ms;
+
+  --header-h: 60px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}

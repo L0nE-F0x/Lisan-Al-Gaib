@@ -1,0 +1,25 @@
+{
+  "name": "lisan-al-gaib",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Lisan al-Gaib: an interactive atlas of Arrakis and the Known Universe, after Frank Herbert's Dune novels. Unofficial fan project.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run validate && tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "validate": "node scripts/validate-data.ts"
+  },
+  "dependencies": {
+    "@fontsource/cinzel": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/rajdhani": "5.3.0",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.187.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  }
+}

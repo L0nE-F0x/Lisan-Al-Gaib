@@ -1,0 +1,12 @@
+@import '@fontsource/cinzel/400.css';
+@import '@fontsource/cinzel/500.css';
+@import '@fontsource/cinzel/600.css';
+@import '@fontsource/rajdhani/500.css';
+@import '@fontsource/rajdhani/600.css';
+@import '@fontsource/rajdhani/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/700.css';
+
+@import './tokens.css';
+@import './base.css';
+@import './shell.css';
