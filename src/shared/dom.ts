@@ -44,7 +44,7 @@ export function append(parent: Node, children: (Child | Child[])[]): void {
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 /** Build an SVG icon from a 24x24 path list. Decorative by default (aria-hidden). */
-export function icon(paths: string | string[], opts: { label?: string; size?: number; fill?: boolean } = {}): SVGSVGElement {
+export function icon(paths: string | readonly string[], opts: { label?: string; size?: number; fill?: boolean } = {}): SVGSVGElement {
   const s = document.createElementNS(SVG_NS, 'svg');
   s.setAttribute('viewBox', '0 0 24 24');
   s.setAttribute('width', String(opts.size ?? 20));
@@ -60,7 +60,7 @@ export function icon(paths: string | string[], opts: { label?: string; size?: nu
   } else {
     s.setAttribute('aria-hidden', 'true');
   }
-  for (const d of Array.isArray(paths) ? paths : [paths]) {
+  for (const d of typeof paths === "string" ? [paths] : paths) {
     const p = document.createElementNS(SVG_NS, 'path');
     p.setAttribute('d', d);
     s.appendChild(p);
